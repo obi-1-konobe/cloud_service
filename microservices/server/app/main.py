@@ -24,3 +24,9 @@ class Metrics(BaseModel):
 async def index():
     return storage
 
+
+@app.post('/', status_code=201)
+async def add_movie(payload: Metrics):
+    movie = payload.dict()
+    storage.append(movie)
+    return {'id': len(storage) - 1}
