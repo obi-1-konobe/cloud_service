@@ -32,6 +32,12 @@ async def save_indicators(payload: IndicatorsOUT):
         'heartbeats': indicators["heartbeats"]
     }
     data_json = json.dumps(data)
-    r = requests.post(f'http://localhost:8080/items/{indicators["device_id"]}/indicators', data=data_json)
-    print(r)
+    requests.post(f'http://localhost:8080/items/{indicators["device_id"]}/indicators', data=data_json)
     # return {'id': len(storage) - 1}
+
+
+@app.get('/device/{device_id}', response_model=List[IndicatorsIN])
+async def get_device_indicators(device_id: int):
+    response = requests.get(f'http://localhost:8080/items/{device_id}/indicators')
+    res_payload_dict = response.json()
+    return res_payload_dict

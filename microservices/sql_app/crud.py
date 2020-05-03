@@ -12,7 +12,7 @@ def get_user_by_email(db: Session, email: str):
 
 
 def get_users(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User).offset(skip).limit(limit).all()
+    return db.query(models.User.id, models.User.email).offset(skip).limit(limit).all()
 
 
 def create_user(db: Session, user: schemas.UserCreate):
@@ -25,7 +25,10 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 
 def get_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Item).offset(skip).limit(limit).all()
+    return db.query(models.Item.id,
+                    models.Item.title,
+                    models.Item.description,
+                    models.Item.owner_id).offset(skip).limit(limit).all()
 
 
 def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
@@ -46,3 +49,8 @@ def create_item_indicator(db: Session, indicator: schemas.IndicatorCreate, item_
 
 def get_indicators(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Indicators).offset(skip).limit(limit).all()
+
+
+def get_item_indicators(db: Session, item_id: int):
+    res = db.query(models.Indicators).filter(models.Indicators.device_id == item_id).all()
+    return res
