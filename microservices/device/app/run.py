@@ -21,6 +21,6 @@ while True:
         }
         data_json = json.dumps(data)
         # payload = {'payload': data_json}
-        r = requests.post('http://localhost:8000/', data=data_json)
+        r = requests.post('http://89.208.228.166:8000/', data=data_json)
         print(r)
     time.sleep(10)
