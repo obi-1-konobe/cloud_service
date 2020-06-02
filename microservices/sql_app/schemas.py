@@ -4,9 +4,17 @@ from pydantic import BaseModel
 
 
 class IndicatorBase(BaseModel):
-    datetime: str
-    heartbeats: int
-    temperature: int
+    name: str
+    gender: str
+    doctor: str
+    ward: str
+    bunk: str
+    date_in: str
+    date_time: str
+    temperature: float
+    heartbeat: int
+    pressure: int
+    nrm: int
 
 
 class IndicatorCreate(IndicatorBase):
@@ -15,7 +23,7 @@ class IndicatorCreate(IndicatorBase):
 
 class Indicator(IndicatorBase):
     id: int
-    device_id: int
+    patient_id: int
 
     class Config:
         orm_mode = True

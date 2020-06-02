@@ -1,4 +1,0 @@
-uvicorn sql_app.main:app --host 89.208.228.166 --port 8080
-python microservices/device/app/run.py
-uvicorn microservices.statistic.app.main:app --host 89.208.228.166 --port 8008
-

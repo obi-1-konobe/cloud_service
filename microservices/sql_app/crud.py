@@ -40,7 +40,7 @@ def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
 
 
 def create_item_indicator(db: Session, indicator: schemas.IndicatorCreate, item_id: int):
-    db_indicator = models.Indicators(**indicator.dict(), device_id=item_id)
+    db_indicator = models.Indicators(**indicator.dict(), patient_id=item_id)
     db.add(db_indicator)
     db.commit()
     db.refresh(db_indicator)
@@ -52,5 +52,5 @@ def get_indicators(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_item_indicators(db: Session, item_id: int):
-    res = db.query(models.Indicators).filter(models.Indicators.device_id == item_id).all()
+    res = db.query(models.Indicators).filter(models.Indicators.patient_id == item_id).all()
     return res

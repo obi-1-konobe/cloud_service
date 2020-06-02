@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -31,9 +31,17 @@ class Indicators(Base):
     __tablename__ = 'indicators'
 
     id = Column(Integer, primary_key=True, index=True)
-    datetime = Column(String, index=True)
-    heartbeats = Column(Integer, index=True)
-    temperature = Column(Integer, index=True)
-    device_id = Column(Integer, ForeignKey("items.id"))
+    name = Column(String, index=True)
+    gender = Column(String, index=True)
+    doctor = Column(String, index=True)
+    ward = Column(String, index=True)
+    bunk = Column(String, index=True)
+    date_in = Column(String, index=True)
+    date_time = Column(String, index=True)
+    heartbeat = Column(Integer, index=True)
+    temperature = Column(Float, index=True)
+    pressure = Column(Integer, index=True)
+    nrm = Column(Integer, index=True)
+    patient_id = Column(Integer, ForeignKey("items.id"))
 
     device = relationship("Item", back_populates="indicators")
