@@ -30,7 +30,7 @@ patients = {
         'id': 4,
         'name': 'Patient_4',
         'gender': 'female',
-        'doctor_name': 'Doctor_4',
+        'doctor_name': 'Doctor_1',
         'ward': 2,
         'bunk': 4,
         'date_in': '20/04/2020',
