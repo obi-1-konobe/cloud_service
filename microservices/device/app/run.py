@@ -20,7 +20,7 @@ import pandas as pd
 # heartbeats = list()
 # pressures = list()
 # nrms = list()
-
+#
 # a = datetime(2020,6,3,0,1,2)
 
 # for _ in range(1000):
@@ -40,6 +40,14 @@ while True:
         heartbeat = int(np.random.normal(80, 5))
         pressure = int(np.random.normal(110, 5))
         nrm = int(np.random.normal(16, 2))
+        # if idx == '3':
+        #     temperature += 3
+        # if idx == '4':
+        #     heartbeat += 30
+        # if idx == '5':
+        #     pressure += 40
+        # if idx == '6':
+        #     nrm += 6
 
         # patient_ids.append(patient_id)
         # names.append(name)
@@ -54,8 +62,8 @@ while True:
         # pressures.append(pressure)
         # nrms.append(nrm)
 
-    # a += timedelta(0, 60)
-
+#     a += timedelta(0, 60)
+#
 # result = pd.DataFrame()
 # result['patient_id'] = patient_ids
 # result['name'] = names
@@ -67,7 +75,8 @@ while True:
 # result['date_time'] = date_times
 # result['temperature'] = temperatures
 # result['heartbeat'] = heartbeats
-# result['pressure'] = pressures
+# result['pressure_1'] = pressures
+# result['pressure_2'] = [int(np.random.normal(80, 5)) for x in range(6000)]
 # result['nrm'] = nrms
 #
 # result.to_excel('indicators.xls')
@@ -87,7 +96,8 @@ while True:
             'nrm': nrm,
         }
         data_json = json.dumps(data)
-        r = requests.post('http://localhost:8000/', data=data_json)
+        # r = requests.post('http://localhost:8000/', data=data_json)
+        r = requests.post('http://89.208.228.166:8080/', data=data_json)
         print(r)
     time.sleep(3600)
 
