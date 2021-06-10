@@ -8,7 +8,7 @@ click==7.1.1
 contextvars==2.4
 databases==0.2.6
 dataclasses==0.7
-fastapi==0.54.1
+fastapi==0.65.2
 h11==0.9.0
 httptools==0.1.1
 idna==2.9
